@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿ using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Panda.Application.Common.Interfaces.Authentication;
 using Panda.Application.Common.Interfaces.Services;
 using Microsoft.Extensions.Options;
+using Panda.Domain.Entities;
 
 namespace Panda.Infrastructure.Authentication
 {
@@ -19,7 +20,7 @@ namespace Panda.Infrastructure.Authentication
             _jwtSettings = jwtOptions.Value;
         }
 
-        public string GenerateToken(Guid userId, string firstName, string lastName)
+        public string GenerateToken(User user)
         {
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(
@@ -28,9 +29,9 @@ namespace Panda.Infrastructure.Authentication
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, firstName + " " + lastName),
-                new Claim(JwtRegisteredClaimNames.GivenName, firstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, lastName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.FirstName + " " + user.LastName),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 
