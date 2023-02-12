@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d8e5c635-47ab-4343-86f3-594af2ed0231</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Panda.Contracts\Panda.Contracts.csproj" />
+    <ProjectReference Include="..\Panda.Application\Panda.Application.csproj" />
+    <ProjectReference Include="..\Panda.Infrastructure\Panda.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
