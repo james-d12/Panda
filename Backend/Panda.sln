@@ -3,44 +3,79 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Api", "Panda.Api\Panda.Api.csproj", "{05F383F2-49E0-4FCF-A68B-00B54B22A862}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5CDFC311-46AB-45C3-83B8-220E47651416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Application", "Panda.Application\Panda.Application.csproj", "{8A0B3A8C-C55E-486C-942C-99CAC451BC92}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A2B8BF57-7A5D-4FC9-AFB7-D2E21275DC47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Contracts", "Panda.Contracts\Panda.Contracts.csproj", "{94C8FC7A-859D-4EB9-A39E-FA93A98DDE36}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution files", "solution files", "{D39A78EB-C028-410E-AC23-37DDD8D88CB9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Domain", "Panda.Domain\Panda.Domain.csproj", "{5044E115-608E-455D-BABE-77561906DBC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Api", "src\Panda.Api\Panda.Api.csproj", "{9AB89B05-1820-47C3-8E91-D923CCD24B87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Infrastructure", "Panda.Infrastructure\Panda.Infrastructure.csproj", "{3C211E89-13EE-4434-A756-804B658614BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Core", "src\Panda.Core\Panda.Core.csproj", "{F1ACB90B-3460-4D5D-A3EF-DA0DEE489EF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Infrastructure", "src\Panda.Infrastructure\Panda.Infrastructure.csproj", "{FB6C881B-C632-41FC-9038-9AA8C5E0F149}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Persistence", "src\Panda.Persistence\Panda.Persistence.csproj", "{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Core.Bench", "test\Panda.Core.Bench\Panda.Core.Bench.csproj", "{FC6E09E8-EBEA-4570-B215-3FFD0A885E44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Core.Tests", "test\Panda.Core.Tests\Panda.Core.Tests.csproj", "{46B5A83A-E9FA-4656-A558-6927A617B4E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Infrastructure.Tests", "test\Panda.Infrastructure.Tests\Panda.Infrastructure.Tests.csproj", "{1199E26C-616B-4919-8E06-CA1D53660774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AB89B05-1820-47C3-8E91-D923CCD24B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB89B05-1820-47C3-8E91-D923CCD24B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB89B05-1820-47C3-8E91-D923CCD24B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB89B05-1820-47C3-8E91-D923CCD24B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1ACB90B-3460-4D5D-A3EF-DA0DEE489EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1ACB90B-3460-4D5D-A3EF-DA0DEE489EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1ACB90B-3460-4D5D-A3EF-DA0DEE489EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1ACB90B-3460-4D5D-A3EF-DA0DEE489EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6C881B-C632-41FC-9038-9AA8C5E0F149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6C881B-C632-41FC-9038-9AA8C5E0F149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6C881B-C632-41FC-9038-9AA8C5E0F149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6C881B-C632-41FC-9038-9AA8C5E0F149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC6E09E8-EBEA-4570-B215-3FFD0A885E44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC6E09E8-EBEA-4570-B215-3FFD0A885E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC6E09E8-EBEA-4570-B215-3FFD0A885E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC6E09E8-EBEA-4570-B215-3FFD0A885E44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1199E26C-616B-4919-8E06-CA1D53660774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1199E26C-616B-4919-8E06-CA1D53660774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1199E26C-616B-4919-8E06-CA1D53660774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1199E26C-616B-4919-8E06-CA1D53660774}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05F383F2-49E0-4FCF-A68B-00B54B22A862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05F383F2-49E0-4FCF-A68B-00B54B22A862}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05F383F2-49E0-4FCF-A68B-00B54B22A862}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05F383F2-49E0-4FCF-A68B-00B54B22A862}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A0B3A8C-C55E-486C-942C-99CAC451BC92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A0B3A8C-C55E-486C-942C-99CAC451BC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A0B3A8C-C55E-486C-942C-99CAC451BC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A0B3A8C-C55E-486C-942C-99CAC451BC92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94C8FC7A-859D-4EB9-A39E-FA93A98DDE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94C8FC7A-859D-4EB9-A39E-FA93A98DDE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94C8FC7A-859D-4EB9-A39E-FA93A98DDE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94C8FC7A-859D-4EB9-A39E-FA93A98DDE36}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5044E115-608E-455D-BABE-77561906DBC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5044E115-608E-455D-BABE-77561906DBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5044E115-608E-455D-BABE-77561906DBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5044E115-608E-455D-BABE-77561906DBC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C211E89-13EE-4434-A756-804B658614BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C211E89-13EE-4434-A756-804B658614BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C211E89-13EE-4434-A756-804B658614BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C211E89-13EE-4434-A756-804B658614BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	GlobalSection(NestedProjects) = preSolution
+		{9AB89B05-1820-47C3-8E91-D923CCD24B87} = {5CDFC311-46AB-45C3-83B8-220E47651416}
+		{F1ACB90B-3460-4D5D-A3EF-DA0DEE489EF9} = {5CDFC311-46AB-45C3-83B8-220E47651416}
+		{FB6C881B-C632-41FC-9038-9AA8C5E0F149} = {5CDFC311-46AB-45C3-83B8-220E47651416}
+		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C} = {5CDFC311-46AB-45C3-83B8-220E47651416}
+		{FC6E09E8-EBEA-4570-B215-3FFD0A885E44} = {A2B8BF57-7A5D-4FC9-AFB7-D2E21275DC47}
+		{46B5A83A-E9FA-4656-A558-6927A617B4E4} = {A2B8BF57-7A5D-4FC9-AFB7-D2E21275DC47}
+		{1199E26C-616B-4919-8E06-CA1D53660774} = {A2B8BF57-7A5D-4FC9-AFB7-D2E21275DC47}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91E6DD55-8FBB-4571-BEF6-526E4A15474A}
 	EndGlobalSection
 EndGlobal
