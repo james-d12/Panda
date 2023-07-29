@@ -1,15 +1,15 @@
 ﻿using Panda.Core.Modules.Sages.Repositories;
-using Panda.Infrastructure.Database.Sage;
+using Panda.Infrastructure.Sage.Repositories;
 
 namespace Panda.Infrastructure.Tests;
-public class SageActualRepositoryTest
+public class SageTransactionRepositoryTest
 {
     [Fact]
     public void Test_Get_This_Year_Sage_Actuals()
     {
-        ISageActualRepository sageActualRepository = new SageActualRepository();
+        ISageTransactionRepository sageTransactionRepository = new SageTransactionRepository();
 
-        var sageAccounts = sageActualRepository.GetAllThisYear();
+        var sageAccounts = sageTransactionRepository.GetAllThisYear();
 
         Assert.True(sageAccounts.Count >= 1, "The result did not have 1 or more elements.");
     }

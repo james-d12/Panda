@@ -13,8 +13,8 @@ public class TableTest
         var row2 = table.CreateAndAddRow();
 
         Assert.Equal(2, table.Rows.Count);
-        Assert.Equal(0, table.Columns.Count);
-        Assert.Equal(0, table.Cells.Count);
+        Assert.Empty(table.Columns);
+        Assert.Empty(table.Cells);
 
         Assert.StrictEqual(row1, table.Rows.ElementAt(0));
         Assert.StrictEqual(row2, table.Rows.ElementAt(1));
@@ -30,8 +30,8 @@ public class TableTest
 
 
         Assert.Equal(2, table.Columns.Count);
-        Assert.Equal(0, table.Rows.Count);
-        Assert.Equal(0, table.Cells.Count);
+        Assert.Empty(table.Rows);
+        Assert.Empty(table.Cells);
 
         Assert.StrictEqual(column1, table.Columns.ElementAt(0));
         Assert.StrictEqual(column2, table.Columns.ElementAt(1));
@@ -47,7 +47,7 @@ public class TableTest
 
         table.RemoveRow(row1);
 
-        Assert.Equal(1, table.Rows.Count);
+        Assert.Single(table.Rows);
         Assert.Equal(row2.Id, table.Rows.ElementAt(0).Id);
     }
 
@@ -63,9 +63,9 @@ public class TableTest
         var columnCells = column1.GetCells();
         var rowCells = row1.GetCells();
 
-        Assert.Equal(1, table.Rows.Count);
-        Assert.Equal(1, table.Columns.Count);
-        Assert.Equal(1, table.Cells.Count);
+        Assert.Single(table.Rows);
+        Assert.Single(table.Columns);
+        Assert.Single(table.Cells);
 
         Assert.StrictEqual(row1, table.Rows.ElementAt(0));
         Assert.StrictEqual(column1, table.Columns.ElementAt(0));
@@ -76,9 +76,9 @@ public class TableTest
 
         column1.RemoveCells();
 
-        Assert.Equal(0, table.Cells.Count);
-        Assert.Equal(0, row1.GetCells().Count);
-        Assert.Equal(0, column1.GetCells().Count);
+        Assert.Empty(table.Cells);
+        Assert.Empty(row1.GetCells());
+        Assert.Empty(column1.GetCells());
     }
 
     [Fact]

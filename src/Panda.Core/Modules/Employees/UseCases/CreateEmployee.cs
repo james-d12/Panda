@@ -4,6 +4,7 @@ using Panda.Core.Common.Abstractions.Repositories;
 using Panda.Core.Common.Enums;
 using Panda.Core.Common.Exceptions;
 using Panda.Core.Modules.Employees.Common;
+using Panda.Core.Modules.Employees.Common.Validators;
 using Panda.Core.Modules.Employees.Domain;
 
 namespace Panda.Core.Modules.Employees.UseCases;
@@ -11,15 +12,16 @@ public sealed record CreateEmployeeRequest(string EmailAddress, string Username,
 
 public sealed record CreateEmployeeCommand(string EmailAddress, string Username, Role Role) : ICommand<EmployeeResponse>;
 
-internal sealed class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCommand>
+public sealed class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCommand>
 {
     public CreateEmployeeCommandValidator()
     {
-        RuleFor(x => x.EmailAddress).NotEmpty().MaximumLength(100);
-        RuleFor(x => x.Username).NotEmpty().MaximumLength(100);
-        RuleFor(x => x.Role).IsInEnum();
+        RuleFor(x => x.EmailAddress).SetValidator(new EmailAddressValidator());
+        RuleFor(x => x.Username).SetValidator(new UsernameValidator());
+        RuleFor(x => x.Role)
+            .IsInEnum()
+            .WithMessage("Role must be an ID of a valid Role Option.");
     }
-
 }
 
 internal sealed class CreateEmployeeCommandHandler : ICommandHandler<CreateEmployeeCommand, EmployeeResponse>

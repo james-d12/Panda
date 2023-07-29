@@ -1,5 +1,5 @@
 ﻿using Panda.Core.Modules.Sages.Repositories;
-using Panda.Infrastructure.Database.Sage;
+using Panda.Infrastructure.Sage.Repositories;
 
 namespace Panda.Infrastructure.Tests;
 
