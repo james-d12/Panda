@@ -8,4 +8,5 @@ public sealed class Employee
     public Role Role { get; set; }
     public string Username { get; set; } = string.Empty;
     public string EmailAddress { get; set; } = string.Empty;
+    public string Password { get; } = string.Empty;
 }

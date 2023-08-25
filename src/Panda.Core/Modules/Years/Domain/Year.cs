@@ -50,7 +50,7 @@ public sealed class Year
             return;
         }
 
-        var isAtLeastOneBudgetInProgress = Budgets.Any(budget => budget.Status >= Status.InProgress);
+        var isAtLeastOneBudgetInProgress = Budgets.Any(budget => budget.Status == Status.InProgress);
 
         if (!isAtLeastOneBudgetInProgress)
         {
@@ -67,7 +67,7 @@ public sealed class Year
             return;
         }
 
-        var isAllBudgetsReviewed = Budgets.All(budget => budget.Status >= Status.Reviewed);
+        var isAllBudgetsReviewed = Budgets.All(budget => budget.Status == Status.Reviewed);
 
         if (!isAllBudgetsReviewed)
         {
@@ -84,7 +84,7 @@ public sealed class Year
             return;
         }
 
-        var isAllBudgetsApproved = Budgets.All(budget => budget.Status >= Status.Approved);
+        var isAllBudgetsApproved = Budgets.All(budget => budget.Status == Status.Approved);
 
         if (!isAllBudgetsApproved)
         {
@@ -94,18 +94,18 @@ public sealed class Year
         Status = Status.Approved;
     }
 
-    public void Complete()
+    public void Lockdown()
     {
         if (Status != Status.Approved)
         {
             return;
         }
 
-        var isAllBudgetsCompleted = Budgets.All(budget => budget.Status >= Status.Completed);
+        var isAllBudgetsCompleted = Budgets.All(budget => budget.Status == Status.Completed);
 
         if (!isAllBudgetsCompleted)
         {
-            return;
+            return; 
         }
 
         Status = Status.Completed;
