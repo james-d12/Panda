@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  panda.api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    ports:
+      - "80:80"
+    depends_on:
+      - database
+  database:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: panda_db
+      MYSQL_USER: panda_user
+      MYSQL_PASSWORD: panda_password 
+    ports:
+      - "3306:3306"
