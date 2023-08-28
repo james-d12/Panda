@@ -9,12 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A2B8BF57-7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution files", "solution files", "{D39A78EB-C028-410E-AC23-37DDD8D88CB9}"
 	ProjectSection(SolutionItems) = preProject
-		.dockerignore = .dockerignore
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
-		docker-compose.yml = docker-compose.yml
-		Dockerfile = Dockerfile
 		setup.ps1 = setup.ps1
 	EndProjectSection
 EndProject
@@ -27,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Persistence", "src\Panda.Persistence\Panda.Persistence.csproj", "{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Core.Unit.Tests", "test\Panda.Core.Tests\Panda.Core.Unit.Tests.csproj", "{46B5A83A-E9FA-4656-A558-6927A617B4E4}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +53,10 @@ Global
 		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
