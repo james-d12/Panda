@@ -1,7 +1,7 @@
 ﻿using Panda.Core.Common.Enums;
 using Panda.Core.Modules.Categories.Domain;
 
-namespace Panda.Core.Tests.Modules.Categories;
+namespace Panda.Core.Unit.Tests;
 public class CategoryTest
 {
     [Fact]

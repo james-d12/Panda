@@ -1,6 +1,6 @@
 ﻿using Panda.Core.Modules.Tables.Domain;
 
-namespace Panda.Core.Tests.Modules.Tables;
+namespace Panda.Core.Unit.Tests;
 
 public class TableTest
 {
