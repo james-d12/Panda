@@ -29,4 +29,3 @@ public sealed class Column
         Table.RemoveCellsByColumnId(Id);
     }
 }
-

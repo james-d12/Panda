@@ -17,4 +17,3 @@ internal sealed class TransactionConfiguration : IEntityTypeConfiguration<Transa
         builder.HasIndex(t => new { t.RowId, t.BudgetId, t.SageTransactionId }).IsUnique();
     }
 }
-

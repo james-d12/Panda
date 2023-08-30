@@ -21,4 +21,3 @@ internal sealed class CellConfiguration : IEntityTypeConfiguration<Cell>
         builder.HasIndex(c => new { c.RowId, c.ColumnId, c.TableId }).IsUnique();
     }
 }
-

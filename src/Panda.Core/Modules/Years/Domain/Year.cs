@@ -105,7 +105,7 @@ public sealed class Year
 
         if (!isAllBudgetsCompleted)
         {
-            return; 
+            return;
         }
 
         Status = Status.Completed;

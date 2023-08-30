@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5CDFC311-46AB-45C3-83B8-220E47651416}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A2B8BF57-7A5D-4FC9-AFB7-D2E21275DC47}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution files", "solution files", "{D39A78EB-C028-410E-AC23-37DDD8D88CB9}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -23,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Infrastructure", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Persistence", "src\Panda.Persistence\Panda.Persistence.csproj", "{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Core.Unit.Tests", "test\Panda.Core.Tests\Panda.Core.Unit.Tests.csproj", "{46B5A83A-E9FA-4656-A558-6927A617B4E4}"
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F4518CBA-2CCD-4982-83F0-E8E5C135A138}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Core.Unit.Tests", "src\Panda.Core.Unit.Tests\Panda.Core.Unit.Tests.csproj", "{A7D7B990-3A63-4E7C-91A2-178C6C4E115C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,24 +47,20 @@ Global
 		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46B5A83A-E9FA-4656-A558-6927A617B4E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09D6CC1F-0AF1-4647-962D-D27C120CF4CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D7B990-3A63-4E7C-91A2-178C6C4E115C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D7B990-3A63-4E7C-91A2-178C6C4E115C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D7B990-3A63-4E7C-91A2-178C6C4E115C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D7B990-3A63-4E7C-91A2-178C6C4E115C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9AB89B05-1820-47C3-8E91-D923CCD24B87} = {5CDFC311-46AB-45C3-83B8-220E47651416}
-		{F1ACB90B-3460-4D5D-A3EF-DA0DEE489EF9} = {5CDFC311-46AB-45C3-83B8-220E47651416}
-		{FB6C881B-C632-41FC-9038-9AA8C5E0F149} = {5CDFC311-46AB-45C3-83B8-220E47651416}
-		{3D120C95-D9FD-4156-A6FB-B979F3E65B8C} = {5CDFC311-46AB-45C3-83B8-220E47651416}
-		{46B5A83A-E9FA-4656-A558-6927A617B4E4} = {A2B8BF57-7A5D-4FC9-AFB7-D2E21275DC47}
+		{A7D7B990-3A63-4E7C-91A2-178C6C4E115C} = {F4518CBA-2CCD-4982-83F0-E8E5C135A138}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91E6DD55-8FBB-4571-BEF6-526E4A15474A}

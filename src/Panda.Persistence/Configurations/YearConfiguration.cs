@@ -28,4 +28,3 @@ internal sealed class YearConfiguration : IEntityTypeConfiguration<Year>
             .OnDelete(DeleteBehavior.Cascade);
     }
 }
-

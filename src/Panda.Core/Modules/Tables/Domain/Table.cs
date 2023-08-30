@@ -167,4 +167,3 @@ public sealed class Table
         return _cells.Where(cell => cell.ColumnId == columnId).ToImmutableList();
     }
 }
-

@@ -9,4 +9,3 @@ public sealed class ValidationBehaviourException : BaseException
 
     public IReadOnlyDictionary<string, string[]> ErrorsDictionary { get; }
 }
-

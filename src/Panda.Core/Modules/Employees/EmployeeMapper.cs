@@ -14,4 +14,3 @@ internal static class EmployeeMapper
         return employees.Select(ToResponse).ToList();
     }
 }
-
