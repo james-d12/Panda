@@ -25,7 +25,7 @@ internal sealed class ExceptionHandlingMiddleware : IMiddleware
 
     private static async Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
     {
-        var statusCode = GetStatusCode(exception);
+        int statusCode = GetStatusCode(exception);
 
         var response = new
         {

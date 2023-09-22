@@ -38,14 +38,14 @@ internal sealed class CreateEmployeeCommandHandler : ICommandHandler<CreateEmplo
     public async Task<EmployeeResponse> Handle(CreateEmployeeCommand command, CancellationToken cancellationToken)
     {
 
-        var employeeExists = await _employeeRepository.GetByUnique(emailAddress: command.EmailAddress, userName: command.Username, cancellationToken);
+        Employee? employeeExists = await _employeeRepository.GetByUnique(emailAddress: command.EmailAddress, userName: command.Username, cancellationToken);
 
         if (employeeExists is not null)
         {
             throw new ConflictException($"Could not create new employee, as employee exists with Username / Email Address.");
         }
 
-        var employee = new Employee
+        Employee employee = new Employee
         {
             Role = command.Role,
             EmailAddress = command.EmailAddress,

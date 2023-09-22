@@ -29,9 +29,9 @@ public sealed class EmployeesController : ControllerBase
     [ProducesResponseType(typeof(List<EmployeeResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetEmployees(CancellationToken cancellationToken)
     {
-        var query = new GetEmployeesQuery();
+        GetEmployeesQuery query = new GetEmployeesQuery();
 
-        var employees = await _sender.Send(query, cancellationToken);
+        List<EmployeeResponse> employees = await _sender.Send(query, cancellationToken);
 
         return Ok(employees);
     }
@@ -47,9 +47,9 @@ public sealed class EmployeesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetEmployeeById(Guid employeeId, CancellationToken cancellationToken)
     {
-        var query = new GetEmployeeByIdQuery(employeeId);
+        GetEmployeeByIdQuery query = new GetEmployeeByIdQuery(employeeId);
 
-        var employee = await _sender.Send(query, cancellationToken);
+        EmployeeResponse employee = await _sender.Send(query, cancellationToken);
 
         return Ok(employee);
     }
@@ -66,9 +66,9 @@ public sealed class EmployeesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> CreateEmployee([FromBody] CreateEmployeeRequest request, CancellationToken cancellationToken)
     {
-        var command = new CreateEmployeeCommand(Username: request.Username, EmailAddress: request.EmailAddress, Role: request.Role);
+        CreateEmployeeCommand command = new CreateEmployeeCommand(Username: request.Username, EmailAddress: request.EmailAddress, Role: request.Role);
 
-        var employee = await _sender.Send(command, cancellationToken);
+        EmployeeResponse employee = await _sender.Send(command, cancellationToken);
 
         return CreatedAtAction(nameof(GetEmployeeById), new { userId = employee.Id }, employee);
     }
@@ -85,9 +85,9 @@ public sealed class EmployeesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateEmployee(Guid employeeId, [FromBody] UpdateEmployeeRequest request, CancellationToken cancellationToken)
     {
-        var command = new UpdateEmployeeCommand(Id: employeeId, EmailAddress: request.EmailAddress, Username: request.Username, Role: request.Role);
+        UpdateEmployeeCommand command = new UpdateEmployeeCommand(Id: employeeId, EmailAddress: request.EmailAddress, Username: request.Username, Role: request.Role);
 
-        var employee = await _sender.Send(command, cancellationToken);
+        EmployeeResponse employee = await _sender.Send(command, cancellationToken);
 
         return Ok(employee);
     }
@@ -102,9 +102,9 @@ public sealed class EmployeesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteEmployee(Guid employeeId, CancellationToken cancellationToken)
     {
-        var command = new DeleteEmployeeCommand(Id: employeeId);
+        DeleteEmployeeCommand command = new DeleteEmployeeCommand(Id: employeeId);
 
-        var hasDeleted = await _sender.Send(command, cancellationToken);
+        bool hasDeleted = await _sender.Send(command, cancellationToken);
 
         return Ok(hasDeleted);
     }

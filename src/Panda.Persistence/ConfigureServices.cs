@@ -18,8 +18,8 @@ public static class ConfigureServices
 
     public static async Task<IServiceCollection> ApplyMigrations(this IServiceCollection services)
     {
-        using var scope = services.BuildServiceProvider().CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDBContext>();
+        using IServiceScope? scope = services.BuildServiceProvider().CreateScope();
+        ApplicationDBContext? dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDBContext>();
         await dbContext.Database.MigrateAsync();
         return services;
     }

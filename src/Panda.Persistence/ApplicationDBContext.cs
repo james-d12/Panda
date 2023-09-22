@@ -17,7 +17,7 @@ public sealed class ApplicationDBContext : DbContext
     private static string GetSolutionRootDirectory()
     {
         string currentDirectory = Directory.GetCurrentDirectory();
-        var directoryInfo = new DirectoryInfo(currentDirectory);
+        DirectoryInfo? directoryInfo = new DirectoryInfo(currentDirectory);
 
         while (directoryInfo.Parent != null)
         {
