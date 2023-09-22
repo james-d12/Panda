@@ -7,7 +7,7 @@ public class TableTest
     [Fact]
     public void Test_Table_Add_Rows()
     {
-        Table? table = new Table();
+        Table? table = new();
 
         Row? row1 = table.CreateAndAddRow();
         Row? row2 = table.CreateAndAddRow();
@@ -23,7 +23,7 @@ public class TableTest
     [Fact]
     public void Test_Table_Add_Columns()
     {
-        Table? table = new Table();
+        Table? table = new();
 
         Column? column1 = table.CreateAndAddColumn();
         Column? column2 = table.CreateAndAddColumn();
@@ -40,7 +40,7 @@ public class TableTest
     [Fact]
     public void Test_Table_Add_Remove_Rows()
     {
-        Table? table = new Table();
+        Table? table = new();
 
         Row? row1 = table.CreateAndAddRow();
         Row? row2 = table.CreateAndAddRow();
@@ -54,7 +54,7 @@ public class TableTest
     [Fact]
     public void Test_Table_Rows_Columns_Cells()
     {
-        Table? table = new Table();
+        Table? table = new();
 
         Row? row1 = table.CreateAndAddRow();
         Column? column1 = table.CreateAndAddColumn();
@@ -84,7 +84,7 @@ public class TableTest
     [Fact]
     public void Test_Table_Cell_Update_Restriction()
     {
-        Table? table = new Table();
+        Table? table = new();
 
         Row? row1 = table.CreateAndAddRow();
         Column? column1 = table.CreateAndAddColumn();

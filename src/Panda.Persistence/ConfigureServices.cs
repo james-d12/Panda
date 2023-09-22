@@ -1,16 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Panda.Core.Common.Abstractions.Repositories;
 using Panda.Core.Modules.Employees;
-using Panda.Persistence;
 using Panda.Persistence.Repositories;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Panda.Persistence;
 
 public static class ConfigureServices
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
     {
-        services.AddDbContext<ApplicationDBContext>();
+        services.AddDbContext<ApplicationDbContext>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         return services;
@@ -19,9 +19,8 @@ public static class ConfigureServices
     public static async Task<IServiceCollection> ApplyMigrations(this IServiceCollection services)
     {
         using IServiceScope? scope = services.BuildServiceProvider().CreateScope();
-        ApplicationDBContext? dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDBContext>();
+        ApplicationDbContext? dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         await dbContext.Database.MigrateAsync();
         return services;
     }
-
 }

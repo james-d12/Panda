@@ -1,4 +1,6 @@
 using Panda.Api.Middleware;
+using Panda.Core;
+using Panda.Persistence;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

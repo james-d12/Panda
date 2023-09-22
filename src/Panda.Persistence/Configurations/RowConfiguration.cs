@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Panda.Core.Modules.Tables.Domain;
 
 namespace Panda.Persistence.Configurations;
+
 internal sealed class RowConfiguration : IEntityTypeConfiguration<Row>
 {
     public void Configure(EntityTypeBuilder<Row> builder)

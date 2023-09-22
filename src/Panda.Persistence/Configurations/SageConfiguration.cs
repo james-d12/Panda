@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Panda.Core.Modules.Sages.Domain;
 
 namespace Panda.Persistence.Configurations;
+
 internal sealed class SageConfiguration : IEntityTypeConfiguration<Sage>
 {
     public void Configure(EntityTypeBuilder<Sage> builder)

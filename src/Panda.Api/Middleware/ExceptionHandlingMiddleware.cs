@@ -7,7 +7,10 @@ internal sealed class ExceptionHandlingMiddleware : IMiddleware
 {
     private readonly ILogger<ExceptionHandlingMiddleware> _logger;
 
-    public ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger) => _logger = logger;
+    public ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger)
+    {
+        _logger = logger;
+    }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
@@ -27,12 +30,7 @@ internal sealed class ExceptionHandlingMiddleware : IMiddleware
     {
         int statusCode = GetStatusCode(exception);
 
-        var response = new
-        {
-            status = statusCode,
-            detail = exception.Message,
-            errors = GetErrors(exception)
-        };
+        var response = new { status = statusCode, detail = exception.Message, errors = GetErrors(exception) };
 
         httpContext.Response.ContentType = "application/json";
 
@@ -63,5 +61,4 @@ internal sealed class ExceptionHandlingMiddleware : IMiddleware
 
         return errors;
     }
-
 }

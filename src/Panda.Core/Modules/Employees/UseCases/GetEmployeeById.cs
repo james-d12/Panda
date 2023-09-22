@@ -1,6 +1,7 @@
 ﻿using Panda.Core.Common.Abstractions.Messaging;
 using Panda.Core.Common.Exceptions;
 using Panda.Core.Modules.Employees.Common;
+using Panda.Core.Modules.Employees.Domain;
 
 namespace Panda.Core.Modules.Employees.UseCases;
 
@@ -10,11 +11,14 @@ internal sealed class GetEmployeeByIdQueryHandler : IQueryHandler<GetEmployeeByI
 {
     private readonly IEmployeeRepository _employeeRepsitory;
 
-    public GetEmployeeByIdQueryHandler(IEmployeeRepository employeeRepsitory) => _employeeRepsitory = employeeRepsitory;
+    public GetEmployeeByIdQueryHandler(IEmployeeRepository employeeRepsitory)
+    {
+        _employeeRepsitory = employeeRepsitory;
+    }
 
     public async Task<EmployeeResponse> Handle(GetEmployeeByIdQuery query, CancellationToken cancellationToken)
     {
-        var employee = await _employeeRepsitory.GetById(query.Id, cancellationToken);
+        Employee? employee = await _employeeRepsitory.GetById(query.Id, cancellationToken);
 
         if (employee is null)
         {
@@ -23,5 +27,4 @@ internal sealed class GetEmployeeByIdQueryHandler : IQueryHandler<GetEmployeeByI
 
         return EmployeeMapper.ToResponse(employee);
     }
-
 }

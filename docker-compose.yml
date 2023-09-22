@@ -15,6 +15,6 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: panda_db
       MYSQL_USER: panda_user
-      MYSQL_PASSWORD: panda_password 
+      MYSQL_PASSWORD: panda_password
     ports:
       - "3306:3306"

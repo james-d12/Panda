@@ -2,18 +2,6 @@
 
 public sealed class Cell
 {
-    public Guid Id { get; private set; }
-    public Guid RowId { get; private set; }
-    public Row Row { get; private set; } = null!;
-    public Guid ColumnId { get; private set; }
-    public Column Column { get; private set; } = null!;
-    public Guid TableId { get; private set; }
-    public Table Table { get; private set; } = null!;
-    public DateTime? DateTime { get; private set; } = null;
-    public ulong? Quantity { get; private set; } = null;
-    public double? Price { get; private set; } = null;
-    public string? Name { get; private set; } = null;
-
     private Cell() { }
 
     internal Cell(Table table, Row row, Column column)
@@ -26,6 +14,18 @@ public sealed class Cell
         TableId = table.Id;
         Table = table;
     }
+
+    public Guid Id { get; private set; }
+    public Guid RowId { get; private set; }
+    public Row Row { get; private set; } = null!;
+    public Guid ColumnId { get; private set; }
+    public Column Column { get; private set; } = null!;
+    public Guid TableId { get; private set; }
+    public Table Table { get; private set; } = null!;
+    public DateTime? DateTime { get; private set; }
+    public ulong? Quantity { get; private set; }
+    public double? Price { get; private set; }
+    public string? Name { get; private set; }
 
 
     public void SetDateTime(DateTime dateTime)
@@ -58,6 +58,7 @@ public sealed class Cell
 
         Quantity = quantity;
     }
+
     public void SetName(string name)
     {
         if (!CanSetName())
@@ -73,6 +74,7 @@ public sealed class Cell
         object?[] fields = { Price, Quantity, Name };
         return fields.All(field => field == null);
     }
+
     private bool CanSetPrice()
     {
         object?[] fields = { DateTime, Quantity, Name };

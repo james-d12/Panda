@@ -7,26 +7,26 @@ namespace Panda.Core.Modules.Tables.Domain;
 
 public sealed class Table
 {
+    private readonly HashSet<Cell> _cells = new();
     private readonly HashSet<Column> _columns = new();
     private readonly HashSet<Row> _rows = new();
-    private readonly HashSet<Cell> _cells = new();
-
-    public Guid Id { get; private set; }
-    public Guid? SandboxId { get; private set; } = null;
-    public Sandbox Sandbox { get; private set; } = null!;
-    public Guid? SummaryId { get; private set; } = null;
-    public Summary Summary { get; private set; } = null!;
-    public Guid? ReviewId { get; private set; } = null;
-    public Review Review { get; private set; } = null!;
-
-    public IReadOnlyCollection<Column> Columns { get => _columns; }
-    public IReadOnlyCollection<Row> Rows { get => _rows; }
-    public IReadOnlyCollection<Cell> Cells { get => _cells; }
 
     public Table()
     {
         Id = Guid.NewGuid();
     }
+
+    public Guid Id { get; }
+    public Guid? SandboxId { get; private set; }
+    public Sandbox Sandbox { get; private set; } = null!;
+    public Guid? SummaryId { get; private set; }
+    public Summary Summary { get; private set; } = null!;
+    public Guid? ReviewId { get; private set; }
+    public Review Review { get; private set; } = null!;
+
+    public IReadOnlyCollection<Column> Columns => _columns;
+    public IReadOnlyCollection<Row> Rows => _rows;
+    public IReadOnlyCollection<Cell> Cells => _cells;
 
     public void SetReview(Review review)
     {
@@ -48,30 +48,29 @@ public sealed class Table
 
     public Row CreateAndAddRow()
     {
-        var row = new Row(table: this, notes: "");
+        Row row = new Row(this, "");
         _rows.Add(row);
         return row;
-
     }
 
     public Column CreateAndAddColumn()
     {
-        var column = new Column(table: this, title: "", field: "");
+        Column column = new Column(this, "", "");
         _columns.Add(column);
         return column;
     }
 
     public Cell? CreateAndAddCellById(Guid rowId, Guid columnId)
     {
-        var row = _rows.First(row => row.Id == rowId);
-        var column = _columns.First(column => column.Id == columnId);
+        Row? row = _rows.First(row => row.Id == rowId);
+        Column? column = _columns.First(column => column.Id == columnId);
 
         if (row == null || column == null)
         {
             return null;
         }
 
-        var cell = new Cell(table: this, row, column);
+        Cell cell = new Cell(this, row, column);
         _cells.Add(cell);
         return cell;
     }
@@ -83,8 +82,8 @@ public sealed class Table
 
     public void CreateAndAddCellsById(Guid rowId, Guid columnId, int count)
     {
-        var row = _rows.First(row => row.Id == rowId);
-        var column = _columns.First(column => column.Id == columnId);
+        Row row = _rows.First(row => row.Id == rowId);
+        Column column = _columns.First(column => column.Id == columnId);
         CreateAndAddCells(row, column, count);
     }
 
@@ -92,7 +91,7 @@ public sealed class Table
     {
         for (int i = 0; i < count; i++)
         {
-            var cell = new Cell(this, row, column);
+            Cell cell = new Cell(this, row, column);
             _cells.Add(cell);
         }
     }
@@ -104,8 +103,8 @@ public sealed class Table
             return;
         }
 
-        var row = _rows.First(row => row.Id == cell.RowId);
-        var column = _columns.First(column => column.Id == cell.ColumnId);
+        Row? row = _rows.First(row => row.Id == cell.RowId);
+        Column? column = _columns.First(column => column.Id == cell.ColumnId);
 
         if (row == null || column == null)
         {

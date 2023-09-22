@@ -2,12 +2,12 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-		<LangVersion>latest</LangVersion>
-		<Features>strict</Features>
-		<WarningLevel>4</WarningLevel>
+        <LangVersion>latest</LangVersion>
+        <Features>strict</Features>
+        <WarningLevel>4</WarningLevel>
         <Nullable>enable</Nullable>
         <AnalyzeMode>all</AnalyzeMode>
-	    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
     </PropertyGroup>
 </Project>

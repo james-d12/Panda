@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Panda.Core.Common.Behaviour;
 using System.Reflection;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Panda.Core;
 
 public static class ConfigureServices
 {

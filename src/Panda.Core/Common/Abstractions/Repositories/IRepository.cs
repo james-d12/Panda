@@ -1,4 +1,5 @@
-﻿namespace Panda.Core.Domain.Repositories;
+﻿namespace Panda.Core.Common.Abstractions.Repositories;
+
 public interface IRepository<T> where T : class
 {
     void Add(T employee);

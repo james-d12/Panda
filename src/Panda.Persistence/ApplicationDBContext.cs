@@ -3,7 +3,7 @@ using Panda.Core.Modules.Employees.Domain;
 
 namespace Panda.Persistence;
 
-public sealed class ApplicationDBContext : DbContext
+public sealed class ApplicationDbContext : DbContext
 {
     public DbSet<Employee> Employees => Set<Employee>();
 
@@ -17,7 +17,7 @@ public sealed class ApplicationDBContext : DbContext
     private static string GetSolutionRootDirectory()
     {
         string currentDirectory = Directory.GetCurrentDirectory();
-        DirectoryInfo? directoryInfo = new DirectoryInfo(currentDirectory);
+        DirectoryInfo? directoryInfo = new(currentDirectory);
 
         while (directoryInfo.Parent != null)
         {
@@ -35,6 +35,6 @@ public sealed class ApplicationDBContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDBContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 }

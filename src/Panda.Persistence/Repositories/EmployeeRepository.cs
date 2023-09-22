@@ -3,16 +3,21 @@ using Panda.Core.Modules.Employees;
 using Panda.Core.Modules.Employees.Domain;
 
 namespace Panda.Persistence.Repositories;
+
 public sealed class EmployeeRepository : IEmployeeRepository
 {
     private readonly DbSet<Employee> _dbSet;
 
-    public EmployeeRepository(ApplicationDBContext dbContext) => _dbSet = dbContext.Employees;
+    public EmployeeRepository(ApplicationDbContext dbContext)
+    {
+        _dbSet = dbContext.Employees;
+    }
 
     public void Add(Employee employee)
     {
         _dbSet.Add(employee);
     }
+
     public void Update(Employee employee)
     {
         _dbSet.Update(employee);
@@ -33,8 +38,10 @@ public sealed class EmployeeRepository : IEmployeeRepository
         return _dbSet.FirstOrDefaultAsync(employee => employee.Id == Id, cancellationToken);
     }
 
-    public Task<Employee?> GetByUnique(string emailAddress, string userName, CancellationToken cancellationToken = default)
+    public Task<Employee?> GetByUnique(string emailAddress, string userName,
+        CancellationToken cancellationToken = default)
     {
-        return _dbSet.FirstOrDefaultAsync(employee => employee.EmailAddress == emailAddress || employee.Username == userName, cancellationToken);
+        return _dbSet.FirstOrDefaultAsync(
+            employee => employee.EmailAddress == emailAddress || employee.Username == userName, cancellationToken);
     }
 }

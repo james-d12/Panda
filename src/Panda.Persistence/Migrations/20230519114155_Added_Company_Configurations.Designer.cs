@@ -10,7 +10,7 @@ using Panda.Persistence;
 
 namespace Panda.Persistence.Migrations
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230519114155_Added_Company_Configurations")]
     partial class Added_Company_Configurations
     {

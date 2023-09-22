@@ -1,13 +1,18 @@
 ﻿using Panda.Core.Common.Abstractions.Repositories;
 
 namespace Panda.Persistence.Repositories;
+
 public sealed class UnitOfWork : IUnitOfWork
 {
-    private readonly ApplicationDBContext _dbContext;
+    private readonly ApplicationDbContext _dbContext;
 
-    public UnitOfWork(ApplicationDBContext dbContext) => _dbContext = dbContext;
+    public UnitOfWork(ApplicationDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
 
-    public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
-        _dbContext.SaveChangesAsync(cancellationToken);
-
+    public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return _dbContext.SaveChangesAsync(cancellationToken);
+    }
 }
