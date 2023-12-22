@@ -25,7 +25,7 @@ jobs:
       run: dotnet restore Panda.sln
 
     - name: Build API
-      run: dotnet build --configuration Release --no-restore 
+      run: dotnet build Panda.sln --configuration Release --no-restore 
 
     - name: Run tests
-      run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+      run: dotnet test Panda.sln --configuration Release --no-build --collect:"XPlat Code Coverage"
