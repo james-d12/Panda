@@ -46,11 +46,6 @@ public sealed class Year
 
     public void InProgress()
     {
-        if (Status != Status.Reviewed || Status != Status.NotStarted)
-        {
-            return;
-        }
-
         bool isAtLeastOneBudgetInProgress = Budgets.Any(budget => budget.Status == Status.InProgress);
 
         if (!isAtLeastOneBudgetInProgress)

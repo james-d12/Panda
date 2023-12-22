@@ -33,9 +33,9 @@ public sealed class EmployeeRepository : IEmployeeRepository
         return _dbSet.ToListAsync(cancellationToken);
     }
 
-    public Task<Employee?> GetById(Guid Id, CancellationToken cancellationToken = default)
+    public Task<Employee?> GetById(Guid id, CancellationToken cancellationToken = default)
     {
-        return _dbSet.FirstOrDefaultAsync(employee => employee.Id == Id, cancellationToken);
+        return _dbSet.FirstOrDefaultAsync(employee => employee.Id == id, cancellationToken);
     }
 
     public Task<Employee?> GetByUnique(string emailAddress, string userName,

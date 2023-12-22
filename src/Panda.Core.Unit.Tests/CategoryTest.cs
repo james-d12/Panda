@@ -8,7 +8,7 @@ public class CategoryTest
     [Fact]
     public void Test_Category_Status()
     {
-        Category? category = new("Test Category", Guid.NewGuid(), CategoryType.CorporateCosts, CategoryField.CC);
+        Category category = new("Test Category", Guid.NewGuid(), CategoryType.CorporateCosts, CategoryField.CC);
         category.SetNotStarted();
         Assert.Equal(Status.NotStarted, category.Status);
         category.SetInProgress();

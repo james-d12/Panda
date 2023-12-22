@@ -48,14 +48,14 @@ public sealed class Table
 
     public Row CreateAndAddRow()
     {
-        Row row = new Row(this, "");
+        Row row = new(this, "");
         _rows.Add(row);
         return row;
     }
 
     public Column CreateAndAddColumn()
     {
-        Column column = new Column(this, "", "");
+        Column column = new(this, "", "");
         _columns.Add(column);
         return column;
     }

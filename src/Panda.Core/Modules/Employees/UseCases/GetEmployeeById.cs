@@ -9,16 +9,16 @@ public sealed record GetEmployeeByIdQuery(Guid Id) : IQuery<EmployeeResponse>;
 
 internal sealed class GetEmployeeByIdQueryHandler : IQueryHandler<GetEmployeeByIdQuery, EmployeeResponse>
 {
-    private readonly IEmployeeRepository _employeeRepsitory;
+    private readonly IEmployeeRepository _employeeRepository;
 
-    public GetEmployeeByIdQueryHandler(IEmployeeRepository employeeRepsitory)
+    public GetEmployeeByIdQueryHandler(IEmployeeRepository employeeRepository)
     {
-        _employeeRepsitory = employeeRepsitory;
+        _employeeRepository = employeeRepository;
     }
 
     public async Task<EmployeeResponse> Handle(GetEmployeeByIdQuery query, CancellationToken cancellationToken)
     {
-        Employee? employee = await _employeeRepsitory.GetById(query.Id, cancellationToken);
+        Employee? employee = await _employeeRepository.GetById(query.Id, cancellationToken);
 
         if (employee is null)
         {

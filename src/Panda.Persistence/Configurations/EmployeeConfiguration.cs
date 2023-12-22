@@ -14,7 +14,6 @@ internal sealed class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
         builder.Property(e => e.Role).IsRequired().HasConversion<int>().HasColumnOrder(1);
         builder.Property(e => e.Username).IsRequired().HasMaxLength(64).HasColumnOrder(2);
         builder.Property(e => e.EmailAddress).IsRequired().HasMaxLength(128).HasColumnOrder(3);
-        builder.Property(e => e.Password).IsRequired().HasMaxLength(64).HasColumnOrder(4);
 
         builder.HasIndex(e => e.Username).IsUnique();
         builder.HasIndex(e => e.EmailAddress).IsUnique();
