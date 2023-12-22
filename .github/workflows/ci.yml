@@ -22,10 +22,10 @@ jobs:
         dotnet-version: '7.0.x'  # Update to the desired .NET version
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Panda.sln
 
     - name: Build API
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore 
 
     - name: Run tests
       run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
