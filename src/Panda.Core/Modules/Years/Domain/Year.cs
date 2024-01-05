@@ -6,13 +6,6 @@ namespace Panda.Core.Modules.Years.Domain;
 public sealed class Year
 {
     private readonly HashSet<Budget> _budgets = new();
-    public Guid Id { get; private set; }
-    public Status Status { get; private set; }
-    public string Name { get; private set; } = string.Empty;
-    public string Description { get; private set; } = string.Empty;
-    public DateOnly StartDate { get; private set; } = new DateOnly();
-    public DateOnly EndDate { get; private set; } = new DateOnly();
-    public IReadOnlyCollection<Budget> Budgets { get => _budgets; }
 
     private Year() { }
 
@@ -26,6 +19,14 @@ public sealed class Year
         EndDate = endDate;
     }
 
+    public Guid Id { get; private set; }
+    public Status Status { get; private set; }
+    public string Name { get; private set; } = string.Empty;
+    public string Description { get; private set; } = string.Empty;
+    public DateOnly StartDate { get; private set; }
+    public DateOnly EndDate { get; private set; }
+    public IReadOnlyCollection<Budget> Budgets => _budgets;
+
     public void NotStarted()
     {
         if (Status != Status.InProgress)
@@ -33,7 +34,7 @@ public sealed class Year
             return;
         }
 
-        var isAllBudgetsNotStarted = Budgets.All(budget => budget.Status == Status.NotStarted);
+        bool isAllBudgetsNotStarted = Budgets.All(budget => budget.Status == Status.NotStarted);
 
         if (!isAllBudgetsNotStarted)
         {
@@ -45,12 +46,7 @@ public sealed class Year
 
     public void InProgress()
     {
-        if (Status != Status.Reviewed || Status != Status.NotStarted)
-        {
-            return;
-        }
-
-        var isAtLeastOneBudgetInProgress = Budgets.Any(budget => budget.Status == Status.InProgress);
+        bool isAtLeastOneBudgetInProgress = Budgets.Any(budget => budget.Status == Status.InProgress);
 
         if (!isAtLeastOneBudgetInProgress)
         {
@@ -67,7 +63,7 @@ public sealed class Year
             return;
         }
 
-        var isAllBudgetsReviewed = Budgets.All(budget => budget.Status == Status.Reviewed);
+        bool isAllBudgetsReviewed = Budgets.All(budget => budget.Status == Status.Reviewed);
 
         if (!isAllBudgetsReviewed)
         {
@@ -84,7 +80,7 @@ public sealed class Year
             return;
         }
 
-        var isAllBudgetsApproved = Budgets.All(budget => budget.Status == Status.Approved);
+        bool isAllBudgetsApproved = Budgets.All(budget => budget.Status == Status.Approved);
 
         if (!isAllBudgetsApproved)
         {
@@ -101,11 +97,11 @@ public sealed class Year
             return;
         }
 
-        var isAllBudgetsCompleted = Budgets.All(budget => budget.Status == Status.Completed);
+        bool isAllBudgetsCompleted = Budgets.All(budget => budget.Status == Status.Completed);
 
         if (!isAllBudgetsCompleted)
         {
-            return; 
+            return;
         }
 
         Status = Status.Completed;

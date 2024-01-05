@@ -2,12 +2,6 @@
 
 public sealed class Column
 {
-    public Guid Id { get; private set; }
-    public Guid TableId { get; private set; }
-    public Table Table { get; private set; } = null!;
-    public string Title { get; private set; } = string.Empty;
-    public string Field { get; private set; } = string.Empty;
-
     private Column() { }
 
     internal Column(Table table, string title, string field)
@@ -19,6 +13,12 @@ public sealed class Column
         Field = field;
     }
 
+    public Guid Id { get; }
+    public Guid TableId { get; private set; }
+    public Table Table { get; } = null!;
+    public string Title { get; private set; } = string.Empty;
+    public string Field { get; private set; } = string.Empty;
+
     public IReadOnlyCollection<Cell> GetCells()
     {
         return Table.GetCellsForColumn(Id);
@@ -29,4 +29,3 @@ public sealed class Column
         Table.RemoveCellsByColumnId(Id);
     }
 }
-

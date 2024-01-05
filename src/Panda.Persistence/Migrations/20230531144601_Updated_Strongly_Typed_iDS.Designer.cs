@@ -10,7 +10,7 @@ using Panda.Persistence;
 
 namespace Panda.Persistence.Migrations
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230531144601_Updated_Strongly_Typed_iDS")]
     partial class Updated_Strongly_Typed_iDS
     {

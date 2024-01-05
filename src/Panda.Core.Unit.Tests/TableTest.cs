@@ -1,16 +1,16 @@
 ﻿using Panda.Core.Modules.Tables.Domain;
 
-namespace Panda.Core.Tests.Modules.Tables;
+namespace Panda.Core.Unit.Tests;
 
 public class TableTest
 {
     [Fact]
     public void Test_Table_Add_Rows()
     {
-        var table = new Table();
+        Table table = new();
 
-        var row1 = table.CreateAndAddRow();
-        var row2 = table.CreateAndAddRow();
+        Row row1 = table.CreateAndAddRow();
+        Row row2 = table.CreateAndAddRow();
 
         Assert.Equal(2, table.Rows.Count);
         Assert.Empty(table.Columns);
@@ -23,10 +23,10 @@ public class TableTest
     [Fact]
     public void Test_Table_Add_Columns()
     {
-        var table = new Table();
+        Table table = new();
 
-        var column1 = table.CreateAndAddColumn();
-        var column2 = table.CreateAndAddColumn();
+        Column column1 = table.CreateAndAddColumn();
+        Column column2 = table.CreateAndAddColumn();
 
 
         Assert.Equal(2, table.Columns.Count);
@@ -40,10 +40,10 @@ public class TableTest
     [Fact]
     public void Test_Table_Add_Remove_Rows()
     {
-        var table = new Table();
+        Table table = new();
 
-        var row1 = table.CreateAndAddRow();
-        var row2 = table.CreateAndAddRow();
+        Row row1 = table.CreateAndAddRow();
+        Row row2 = table.CreateAndAddRow();
 
         table.RemoveRow(row1);
 
@@ -54,14 +54,14 @@ public class TableTest
     [Fact]
     public void Test_Table_Rows_Columns_Cells()
     {
-        var table = new Table();
+        Table table = new();
 
-        var row1 = table.CreateAndAddRow();
-        var column1 = table.CreateAndAddColumn();
-        var cell1 = table.CreateAndAddCellById(row1.Id, column1.Id);
+        Row row1 = table.CreateAndAddRow();
+        Column column1 = table.CreateAndAddColumn();
+        Cell? cell1 = table.CreateAndAddCellById(row1.Id, column1.Id);
 
-        var columnCells = column1.GetCells();
-        var rowCells = row1.GetCells();
+        IReadOnlyCollection<Cell> columnCells = column1.GetCells();
+        IReadOnlyCollection<Cell> rowCells = row1.GetCells();
 
         Assert.Single(table.Rows);
         Assert.Single(table.Columns);
@@ -84,11 +84,11 @@ public class TableTest
     [Fact]
     public void Test_Table_Cell_Update_Restriction()
     {
-        var table = new Table();
+        Table table = new();
 
-        var row1 = table.CreateAndAddRow();
-        var column1 = table.CreateAndAddColumn();
-        var cell1 = table.CreateAndAddCell(row1, column1);
+        Row row1 = table.CreateAndAddRow();
+        Column column1 = table.CreateAndAddColumn();
+        Cell? cell1 = table.CreateAndAddCell(row1, column1);
 
         cell1?.SetName("Test Name");
 

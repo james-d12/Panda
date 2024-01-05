@@ -8,9 +8,11 @@ using Panda.Core.Modules.Employees.Common.Validators;
 using Panda.Core.Modules.Employees.Domain;
 
 namespace Panda.Core.Modules.Employees.UseCases;
+
 public sealed record CreateEmployeeRequest(string EmailAddress, string Username, Role Role);
 
-public sealed record CreateEmployeeCommand(string EmailAddress, string Username, Role Role) : ICommand<EmployeeResponse>;
+public sealed record CreateEmployeeCommand
+    (string EmailAddress, string Username, Role Role) : ICommand<EmployeeResponse>;
 
 public sealed class CreateEmployeeCommandValidator : AbstractValidator<CreateEmployeeCommand>
 {
@@ -37,19 +39,18 @@ internal sealed class CreateEmployeeCommandHandler : ICommandHandler<CreateEmplo
 
     public async Task<EmployeeResponse> Handle(CreateEmployeeCommand command, CancellationToken cancellationToken)
     {
-
-        var employeeExists = await _employeeRepository.GetByUnique(emailAddress: command.EmailAddress, userName: command.Username, cancellationToken);
+        Employee? employeeExists =
+            await _employeeRepository.GetByUnique(command.EmailAddress, command.Username, cancellationToken);
 
         if (employeeExists is not null)
         {
-            throw new ConflictException($"Could not create new employee, as employee exists with Username / Email Address.");
+            throw new ConflictException(
+                "Could not create new employee, as employee exists with Username / Email Address.");
         }
 
-        var employee = new Employee
+        Employee employee = new()
         {
-            Role = command.Role,
-            EmailAddress = command.EmailAddress,
-            Username = command.Username
+            Role = command.Role, EmailAddress = command.EmailAddress, Username = command.Username
         };
 
         _employeeRepository.Add(employee);
@@ -58,5 +59,4 @@ internal sealed class CreateEmployeeCommandHandler : ICommandHandler<CreateEmplo
 
         return EmployeeMapper.ToResponse(employee);
     }
-
 }

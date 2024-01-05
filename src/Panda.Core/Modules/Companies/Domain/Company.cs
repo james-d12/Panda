@@ -5,10 +5,6 @@ namespace Panda.Core.Modules.Companies.Domain;
 public sealed class Company
 {
     private readonly HashSet<Budget> _budgets = new();
-    public Guid Id { get; private set; }
-    public string Name { get; private set; } = string.Empty;
-    public string Description { get; private set; } = string.Empty;
-    public IReadOnlyCollection<Budget> Budgets { get => _budgets; }
 
     private Company() { }
 
@@ -18,4 +14,9 @@ public sealed class Company
         Name = name;
         Description = description;
     }
+
+    public Guid Id { get; private set; }
+    public string Name { get; private set; } = string.Empty;
+    public string Description { get; private set; } = string.Empty;
+    public IReadOnlyCollection<Budget> Budgets => _budgets;
 }

@@ -1,6 +1,7 @@
 ﻿using Panda.Core.Common.Abstractions.Messaging;
 using Panda.Core.Common.Abstractions.Repositories;
 using Panda.Core.Common.Exceptions;
+using Panda.Core.Modules.Employees.Domain;
 
 namespace Panda.Core.Modules.Employees.UseCases;
 
@@ -19,7 +20,7 @@ internal sealed class DeleteEmployeeCommandHandler : ICommandHandler<DeleteEmplo
 
     public async Task<bool> Handle(DeleteEmployeeCommand command, CancellationToken cancellationToken)
     {
-        var employee = await _employeeRepository.GetById(command.Id, cancellationToken);
+        Employee? employee = await _employeeRepository.GetById(command.Id, cancellationToken);
 
         if (employee is null)
         {
@@ -31,6 +32,4 @@ internal sealed class DeleteEmployeeCommandHandler : ICommandHandler<DeleteEmplo
 
         return true;
     }
-
 }
-

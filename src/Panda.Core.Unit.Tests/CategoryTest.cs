@@ -1,13 +1,14 @@
 ﻿using Panda.Core.Common.Enums;
 using Panda.Core.Modules.Categories.Domain;
 
-namespace Panda.Core.Tests.Modules.Categories;
+namespace Panda.Core.Unit.Tests;
+
 public class CategoryTest
 {
     [Fact]
     public void Test_Category_Status()
     {
-        var category = new Category("Test Category", Guid.NewGuid(), CategoryType.CorporateCosts, CategoryField.CC);
+        Category category = new("Test Category", Guid.NewGuid(), CategoryType.CorporateCosts, CategoryField.CC);
         category.SetNotStarted();
         Assert.Equal(Status.NotStarted, category.Status);
         category.SetInProgress();

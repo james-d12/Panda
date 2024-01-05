@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Panda.Core.Modules.Transaction.Domain;
 
 namespace Panda.Persistence.Configurations;
+
 internal sealed class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
 {
     public void Configure(EntityTypeBuilder<Transaction> builder)
@@ -17,4 +18,3 @@ internal sealed class TransactionConfiguration : IEntityTypeConfiguration<Transa
         builder.HasIndex(t => new { t.RowId, t.BudgetId, t.SageTransactionId }).IsUnique();
     }
 }
-

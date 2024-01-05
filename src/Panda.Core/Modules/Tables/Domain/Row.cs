@@ -2,11 +2,6 @@
 
 public sealed class Row
 {
-    public Guid Id { get; private set; }
-    public Guid TableId { get; private set; }
-    public Table Table { get; private set; } = null!;
-    public string Notes { get; private set; } = string.Empty;
-
     private Row() { }
 
     internal Row(Table table, string notes)
@@ -16,6 +11,11 @@ public sealed class Row
         Table = table;
         Notes = notes;
     }
+
+    public Guid Id { get; }
+    public Guid TableId { get; private set; }
+    public Table Table { get; } = null!;
+    public string Notes { get; private set; } = string.Empty;
 
     public IReadOnlyCollection<Cell> GetCells()
     {

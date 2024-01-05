@@ -10,26 +10,11 @@ namespace Panda.Core.Modules.Budgets.Domain;
 public sealed class Budget
 {
     private readonly HashSet<Category> _categories = new();
-    private BudgetType budgetType;
-
-    public Guid Id { get; private set; }
-    public Guid YearId { get; private set; }
-    public Year Year { get; private set; } = null!;
-    public Guid CompanyId { get; private set; }
-    public Company Company { get; private set; } = null!;
-    public string Name { get; private set; } = string.Empty;
-    public string Description { get; private set; } = string.Empty;
-    public Status Status { get; private set; }
-    public bool IsStandalone { get; private set; } = false;
-    public BudgetType BudgetType { get => budgetType; private set => budgetType = value; }
-
-    public Sandbox? Sandbox { get; private set; }
-    public Summary? Summary { get; private set; }
-    public IReadOnlyCollection<Category> Categories { get => _categories; }
 
     private Budget() { }
 
-    public Budget(Guid yearId, Guid companyId, string name, string description, Status status, bool isStandalone, BudgetType budgetType)
+    public Budget(Guid yearId, Guid companyId, string name, string description, Status status, bool isStandalone,
+        BudgetType budgetType)
     {
         Id = Guid.NewGuid();
         YearId = yearId;
@@ -41,36 +26,67 @@ public sealed class Budget
         BudgetType = budgetType;
     }
 
+    public Guid Id { get; private set; }
+    public Guid YearId { get; private set; }
+    public Year Year { get; private set; } = null!;
+    public Guid CompanyId { get; private set; }
+    public Company Company { get; private set; } = null!;
+    public string Name { get; private set; } = string.Empty;
+    public string Description { get; private set; } = string.Empty;
+    public Status Status { get; private set; }
+    public bool IsStandalone { get; private set; }
+    public BudgetType BudgetType { get; private set; }
+
+    public Sandbox? Sandbox { get; }
+    public Summary? Summary { get; }
+    public IReadOnlyCollection<Category> Categories => _categories;
+
     public void Review()
     {
-        if (GetReviewalStatus() != ReviewalStatus.CanBeReviewed) return;
+        if (GetReviewalStatus() != ReviewalStatus.CanBeReviewed)
+        {
+            return;
+        }
+
         Status = Status.Reviewed;
     }
 
     public void UnReview()
     {
-        if (GetReviewalStatus() != ReviewalStatus.CanBeUnReviewed) return;
+        if (GetReviewalStatus() != ReviewalStatus.CanBeUnReviewed)
+        {
+            return;
+        }
+
         Status = Status.InProgress;
     }
 
     public void Approve()
     {
-        if (GetApprovalStatus() != ApprovalStatus.CanBeApproved) return;
+        if (GetApprovalStatus() != ApprovalStatus.CanBeApproved)
+        {
+            return;
+        }
+
         Status = Status.Approved;
     }
 
     public void UnApprove()
     {
-        if (GetApprovalStatus() != ApprovalStatus.CanBeUnApproved) return;
+        if (GetApprovalStatus() != ApprovalStatus.CanBeUnApproved)
+        {
+            return;
+        }
+
         Status = Status.Reviewed;
     }
 
     public ReviewalStatus GetReviewalStatus()
     {
-        var isBudgetNotStarted = Status == Status.NotStarted;
-        var isBudgetAlreadyReviewed = Status == Status.Reviewed;
-        var isBudgetAlreadyApproved = Status == Status.Approved;
-        var isEveryCategoryReviewed = Categories.All(category => category.Status == Status.Reviewed);
+        bool isBudgetNotStarted = Status == Status.NotStarted;
+        bool isBudgetAlreadyReviewed = Status == Status.Reviewed;
+        bool isBudgetAlreadyApproved = Status == Status.Approved;
+        bool isEveryCategoryReviewed = Categories.All(category => category.Status == Status.Reviewed);
 
         if (isBudgetNotStarted)
         {
@@ -92,10 +108,10 @@ public sealed class Budget
 
     public ApprovalStatus GetApprovalStatus()
     {
-        var isBudgetNotStarted = Status == Status.NotStarted;
-        var isBudgetAlreadyApproved = Status == Status.Approved;
-        var isBudgetAlreadyCompleted = Status == Status.Completed;
-        var isEveryCategoryApproved = Categories.All(category => category.Status == Status.Approved);
+        bool isBudgetNotStarted = Status == Status.NotStarted;
+        bool isBudgetAlreadyApproved = Status == Status.Approved;
+        bool isBudgetAlreadyCompleted = Status == Status.Completed;
+        bool isEveryCategoryApproved = Categories.All(category => category.Status == Status.Approved);
 
         if (isBudgetNotStarted)
         {

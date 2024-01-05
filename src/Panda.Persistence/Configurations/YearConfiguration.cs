@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Panda.Core.Modules.Years.Domain;
 
 namespace Panda.Persistence.Configurations;
+
 internal sealed class YearConfiguration : IEntityTypeConfiguration<Year>
 {
     public void Configure(EntityTypeBuilder<Year> builder)
@@ -28,4 +29,3 @@ internal sealed class YearConfiguration : IEntityTypeConfiguration<Year>
             .OnDelete(DeleteBehavior.Cascade);
     }
 }
-

@@ -1,4 +1,5 @@
 ﻿namespace Panda.Core.Modules.Sages.Domain;
+
 public sealed class SageAccount
 {
     public int AccountNumber { get; set; } = 0;

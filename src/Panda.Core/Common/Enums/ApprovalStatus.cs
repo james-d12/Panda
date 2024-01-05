@@ -1,4 +1,5 @@
 ﻿namespace Panda.Core.Common.Enums;
+
 public enum ApprovalStatus
 {
     CannotBeApproved = 0,
@@ -6,4 +7,3 @@ public enum ApprovalStatus
     CanBeUnApproved = 2,
     CannotBeEdited = 3
 }
-

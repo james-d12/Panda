@@ -5,11 +5,6 @@ namespace Panda.Core.Modules.Sandboxes.Domain;
 
 public sealed class Sandbox
 {
-    public Guid Id { get; private set; }
-    public Guid BudgetId { get; private set; }
-    public Budget Budget { get; private set; } = null!;
-    public Table Table { get; private set; } = null!;
-
     private Sandbox() { }
 
     public Sandbox(Guid budgetId)
@@ -17,4 +12,9 @@ public sealed class Sandbox
         Id = Guid.NewGuid();
         BudgetId = budgetId;
     }
+
+    public Guid Id { get; private set; }
+    public Guid BudgetId { get; private set; }
+    public Budget Budget { get; private set; } = null!;
+    public Table Table { get; private set; } = null!;
 }

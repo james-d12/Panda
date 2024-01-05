@@ -1,4 +1,5 @@
 ﻿namespace Panda.Core.Common.Enums;
+
 public enum ReviewalStatus
 {
     CannotBeReviewed = 0,

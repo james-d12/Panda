@@ -5,12 +5,14 @@ using Panda.Core.Common.Enums;
 using Panda.Core.Common.Exceptions;
 using Panda.Core.Modules.Employees.Common;
 using Panda.Core.Modules.Employees.Common.Validators;
+using Panda.Core.Modules.Employees.Domain;
 
 namespace Panda.Core.Modules.Employees.UseCases;
 
 public sealed record UpdateEmployeeRequest(string EmailAddress, string Username, Role Role);
 
-public sealed record UpdateEmployeeCommand(Guid Id, string EmailAddress, string Username, Role Role) : ICommand<EmployeeResponse>;
+public sealed record UpdateEmployeeCommand
+    (Guid Id, string EmailAddress, string Username, Role Role) : ICommand<EmployeeResponse>;
 
 public sealed class UpdateEmployeeCommandValidator : AbstractValidator<UpdateEmployeeCommand>
 {
@@ -23,7 +25,6 @@ public sealed class UpdateEmployeeCommandValidator : AbstractValidator<UpdateEmp
             .IsInEnum()
             .WithMessage("Role must be an ID of a valid Role Option.");
     }
-
 }
 
 internal sealed class UpdateEmployeeCommandHandler : ICommandHandler<UpdateEmployeeCommand, EmployeeResponse>
@@ -36,9 +37,10 @@ internal sealed class UpdateEmployeeCommandHandler : ICommandHandler<UpdateEmplo
         _employeeRepository = employeeRepository;
         _unitOfWork = unitOfWork;
     }
+
     public async Task<EmployeeResponse> Handle(UpdateEmployeeCommand request, CancellationToken cancellationToken)
     {
-        var employee = await _employeeRepository.GetById(Id: request.Id, cancellationToken);
+        Employee? employee = await _employeeRepository.GetById(request.Id, cancellationToken);
 
         if (employee is null)
         {

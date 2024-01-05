@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Panda.Core.Modules.Tables.Domain;
 
 namespace Panda.Persistence.Configurations;
+
 internal sealed class ColumnConfiguration : IEntityTypeConfiguration<Column>
 {
     public void Configure(EntityTypeBuilder<Column> builder)
@@ -15,6 +16,5 @@ internal sealed class ColumnConfiguration : IEntityTypeConfiguration<Column>
         builder.Property(r => r.Field).IsRequired().HasMaxLength(64).HasColumnOrder(3);
 
         builder.HasIndex(r => r.TableId).IsUnique();
-
     }
 }

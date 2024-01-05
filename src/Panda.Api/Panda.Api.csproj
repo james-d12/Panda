@@ -1,12 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
+    <PropertyGroup>
+        <UserSecretsId>42453ac2-9046-4031-a5d7-0912a84239ad</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..</DockerfileContext>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Panda.Core\Panda.Core.csproj" />
-    <ProjectReference Include="..\Panda.Persistence\Panda.Persistence.csproj" />
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Panda.Core\Panda.Core.csproj"/>
+        <ProjectReference Include="..\Panda.Persistence\Panda.Persistence.csproj"/>
+    </ItemGroup>
 
 </Project>

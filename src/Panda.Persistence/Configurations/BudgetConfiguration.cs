@@ -35,6 +35,5 @@ internal sealed class BudgetConfiguration : IEntityTypeConfiguration<Budget>
             .WithOne(s => s.Budget)
             .HasForeignKey<Summary>(s => s.BudgetId)
             .HasPrincipalKey<Budget>(b => b.Id);
-
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Panda.Core.Modules.Tables.Domain;
 
 namespace Panda.Persistence.Configurations;
+
 internal sealed class CellConfiguration : IEntityTypeConfiguration<Cell>
 {
     public void Configure(EntityTypeBuilder<Cell> builder)
@@ -21,4 +22,3 @@ internal sealed class CellConfiguration : IEntityTypeConfiguration<Cell>
         builder.HasIndex(c => new { c.RowId, c.ColumnId, c.TableId }).IsUnique();
     }
 }
-

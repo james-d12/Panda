@@ -4,24 +4,29 @@ using Panda.Core.Common.Abstractions.Messaging;
 using Panda.Core.Common.Exceptions;
 
 namespace Panda.Core.Common.Behaviour;
+
 public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TResponse : class
-        where TRequest : class, ICommand<TResponse>
+    where TResponse : class
+    where TRequest : class, ICommand<TResponse>
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-    public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators) => _validators = validators;
+    public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
+    {
+        _validators = validators;
+    }
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken)
     {
         if (!_validators.Any())
         {
             return await next();
         }
 
-        var context = new ValidationContext<TRequest>(request);
+        ValidationContext<TRequest> context = new ValidationContext<TRequest>(request);
 
-        var errorsDictionary = _validators
+        Dictionary<string, string[]> errorsDictionary = _validators
             .Select(x => x.Validate(context))
             .SelectMany(x => x.Errors)
             .Where(x => x != null)
@@ -30,8 +35,7 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
                 x => x.ErrorMessage,
                 (propertyName, errorMessages) => new
                 {
-                    Key = propertyName,
-                    Values = errorMessages.Distinct().ToArray()
+                    Key = propertyName, Values = errorMessages.Distinct().ToArray()
                 })
             .ToDictionary(x => x.Key, x => x.Values);
 
@@ -43,4 +47,3 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
         return await next();
     }
 }
-

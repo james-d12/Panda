@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 
 namespace Panda.Core.Modules.Employees.Common.Validators;
+
 internal sealed class UsernameValidator : AbstractValidator<string>
 {
     public UsernameValidator()
