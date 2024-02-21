@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		Directory.Build.props = Directory.Build.props
 		setup.ps1 = setup.ps1
 		.github\workflows\ci.yml = .github\workflows\ci.yml
+		.github\dependabot.yml = .github\dependabot.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panda.Api", "src\Panda.Api\Panda.Api.csproj", "{9AB89B05-1820-47C3-8E91-D923CCD24B87}"
