@@ -5,7 +5,7 @@ namespace Panda.Core.Modules.Years.Domain;
 
 public sealed class Year
 {
-    private readonly HashSet<Budget> _budgets = new();
+    private readonly HashSet<Budget> _budgets = [];
 
     private Year() { }
 
