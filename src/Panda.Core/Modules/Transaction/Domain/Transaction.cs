@@ -18,9 +18,9 @@ public sealed class Transaction
     }
 
     public Guid Id { get; private set; }
-    public Guid RowId { get; set; }
+    public Guid RowId { get; private set; }
     public Row Row { get; private set; } = null!;
-    public Guid BudgetId { get; set; }
+    public Guid BudgetId { get; private set; }
     public Budget Budget { get; private set; } = null!;
-    public Guid SageTransactionId { get; set; }
+    public Guid SageTransactionId { get; private set; }
 }
